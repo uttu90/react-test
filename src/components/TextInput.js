@@ -1,5 +1,5 @@
 import React from 'react';
-import { FormGroup, Input, Label, Col } from 'reactstrap';
+import { FormGroup, Input, Label, Col, Tooltip } from 'reactstrap';
 
 export default function TextInput(props) {
   return (
@@ -12,8 +12,11 @@ export default function TextInput(props) {
           id={props.name}
           value={props.value}
           onChange={props.onChange}
-          invalid={props.invalid}
+          invalid={!!props.error}
         />
+        <Tooltip placement="right" isOpen={!!props.error} target={props.name}>
+          {`${props.text} ${props.error}`}
+        </Tooltip>
       </Col>
     </FormGroup>
   )

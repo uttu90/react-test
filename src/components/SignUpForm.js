@@ -46,7 +46,7 @@ class SignUpForm extends Component {
                 text={LABELS[label].text}
                 value={data[label] || ''}
                 onChange={this.onChange}
-                invalid={errors[label]}
+                error={errors[label]}
               />
             ))
           }
@@ -56,7 +56,7 @@ class SignUpForm extends Component {
             value={data.account_type || ''}
             onChange={this.onChange}
             text="Account type"
-            invalid={errors.account_type}
+            error={errors.account_type}
           />
         </Form>
         <ActionBar>

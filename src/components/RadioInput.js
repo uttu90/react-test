@@ -19,7 +19,7 @@ export default function RadioInput(props) {
                     value={value}
                     checked={value === props.value}
                     onChange={props.onChange}
-                    invalid={props.invalid}
+                    invalid={!!props.error}
                   />
                   {value}
                 </Label>

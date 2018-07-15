@@ -32,7 +32,6 @@ class Menu extends Component {
               </Nav>
             )
           }
-          
       </Navbar>
     );
   }
