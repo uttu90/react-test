@@ -1,5 +1,6 @@
 import configureMockStore from 'redux-mock-store';
-import { duckMiddleWares, duckActions, duckTypes } from '../../duck';
+import { duckMiddleWares, duckActions, duckConstants } from '../../duck';
+import { getDataFromLocalStorage, saveDataToLocalStorage } from '../../duck/utils'
 
 const middlewares = [
   duckMiddleWares.localSavingMiddleware, 
@@ -54,4 +55,77 @@ describe('testing validate middleware', () => {
       duckActions.nextStep()
     ]);
   });
+})
+
+describe('Test localStorage middleware', () => {
+  it('Expect load data', () => {
+    const store = mockStore({});
+
+    // when there is nothing in localstorage: the original payload 
+    //is kept
+
+    store.dispatch(duckActions.loadUser({ key: 'mock state'}));
+    expect(store.getActions()[0].payload).toEqual({ key: 'mock state' });
+
+    // when there is something store in localstorage:
+    const currentState = {
+      authStatus: duckConstants.authState.AUTHORIZED,
+      user: {
+        registerStatus: duckConstants.registerState.UPDATED,
+        infor: {},
+        credentials: {}
+      },
+      errors: {}
+    }
+    saveDataToLocalStorage('auth', currentState);
+    expect(getDataFromLocalStorage('auth')).toEqual(currentState);
+
+    store.dispatch(duckActions.loadUser({ key: 'mock state'}));
+    // The payload will be changed if there is sth stored in local
+    expect(getDataFromLocalStorage('auth')).toEqual(currentState);
+  });
+
+  it('Expect store data when confirm', () => {
+    // The state after dispatching confirm
+    const store = mockStore({
+      authStatus: duckConstants.authState.AUTHORIZED,
+      user: {
+        registerStatus: duckConstants.registerState.UPDATED,
+        infor: {},
+        credentials: {}
+      },
+      errors: {}
+    });
+
+    store.dispatch(duckActions.confirm());
+
+    expect(getDataFromLocalStorage('auth')).toEqual({
+      authStatus: duckConstants.authState.AUTHORIZED,
+      user: {
+        registerStatus: duckConstants.registerState.UPDATED,
+        infor: {},
+        credentials: {}
+      },
+      errors: {}
+    })
+  })
+
+  it('Expect remove data when sign out', () => {
+    const currentState = {
+      authStatus: duckConstants.authState.AUTHORIZED,
+      user: {
+        registerStatus: duckConstants.registerState.UPDATED,
+        infor: {},
+        credentials: {}
+      },
+      errors: {}
+    }
+
+    saveDataToLocalStorage('auth', currentState);
+    expect(getDataFromLocalStorage('auth')).toEqual(currentState);
+
+    const store = mockStore(currentState);
+    store.dispatch(duckActions.signOut());
+    expect(getDataFromLocalStorage('auth')).toEqual();
+  })
 })
