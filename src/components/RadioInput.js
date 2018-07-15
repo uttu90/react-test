@@ -23,7 +23,11 @@ export default function RadioInput(props) {
                   />
                   {value}
                 </Label>
-                <Tooltip placement="right" isOpen={!!props.error} target={props.name}>
+                <Tooltip 
+                  placement="right" 
+                  isOpen={!!props.error} 
+                  target={props.name}
+                >
                   {`${props.text} ${props.error}`}
                 </Tooltip>
               </Col>

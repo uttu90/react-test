@@ -68,9 +68,19 @@ class DetailForm extends Component {
           }
         </Form>
         <ActionBar>
-          <span onClick={this.props.back} className="action-bar-item">{`< Last step`}</span>
+          <span 
+            onClick={this.props.back} 
+            className="action-bar-item"
+          >
+            {`< Last step`}
+          </span>
           <Spacer />
-          <span onClick={this.onSubmit} className="action-bar-item">Next step ></span>
+          <span 
+            onClick={this.onSubmit} 
+            className="action-bar-item"
+          >
+            Next step >
+          </span>
         </ActionBar>
       </div>
     );

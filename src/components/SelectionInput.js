@@ -1,6 +1,15 @@
 import React, { Component } from 'react';
 import classNames from 'classnames';
-import { FormGroup, Dropdown, DropdownItem, Col, Label, DropdownToggle, DropdownMenu, Tooltip } from 'reactstrap';
+import { 
+  Col, 
+  Dropdown, 
+  DropdownItem, 
+  DropdownToggle, 
+  DropdownMenu, 
+  FormGroup, 
+  Label, 
+  Tooltip 
+} from 'reactstrap';
 import './SelectionInput.css';
 
 class SelectionInput extends Component {
