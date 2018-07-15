@@ -11,14 +11,14 @@ class Agreement extends Component {
         </div>
         <ActionBar>
           <span 
-            onClick={this.onSubmit} 
+            onClick={this.props.cancel} 
             className="action-bar-item"
           >
             Cancel
           </span>
           <Spacer />
           <span 
-            onClick={this.onSubmit} 
+            onClick={this.props.accept} 
             className="action-bar-item"
           >
             Submit

@@ -11,7 +11,7 @@ const submitValidationMiddleware = ({ dispatch, getState }) => next => action =>
   const errors = validateAttribute(field, user[field]);
   dispatch(validate(errors));
   if (!checkValidData(errors)) {
-    localStorage.setItem('auth', getState());
+    localStorage.setItem('auth', JSON.stringify(getState()));
     dispatch(nextStep());
   }
 }

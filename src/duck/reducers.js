@@ -58,6 +58,12 @@ function userReducer(state={}, action) {
     
     case types.LOAD_USER:
       return action.payload.user;
+    
+    case types.SIGN_OUT:
+      return {
+        ...state,
+        registerStatus: signingState.GET_STARTED
+      };
       
     default:
       return state;

@@ -38,7 +38,12 @@ class AppContent extends Component {
           />);
       
       case duckConstants.signingState.UPDATED:
-        return <Agreement accept={() => confirm(duckConstants.signingState.ACCEPTED)}/>;
+        return (
+          <Agreement 
+            accept={() => confirm(duckConstants.signingState.ACCEPTED)}
+            cancel={() => confirm(duckConstants.signingState.UNACCEPTED)}
+          />
+        );
       default:
         return null;
     }
