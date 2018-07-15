@@ -28,7 +28,9 @@ export function submitUserData(field) {
 
 export function updateUserData(field, value) {
   return {
-    type: types.UPDATE_USER_DATA
+    type: types.UPDATE_USER_DATA,
+    meta: field,
+    payload: value
   }
 }
 
@@ -51,10 +53,9 @@ export function confirm(accepted = true) {
   }
 }
 
-export function validate(field, errors) {
+export function validate(errors) {
   return {
     type: types.VALIDATE,
-    meta: field,
     payload: errors
   }
 }

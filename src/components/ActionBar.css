@@ -1,0 +1,9 @@
+.actionbar-container {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  padding: 0 1em;
+  top: 90%;
+  height: 10%;
+  position: absolute;
+}

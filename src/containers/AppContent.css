@@ -1,0 +1,15 @@
+.custom-modal-diaglog {
+  margin: 0 !important;
+  max-width: unset !important;
+  width: 100% !important;
+  height: 100% !important;
+}
+
+.custom-modal-content {
+  width: 50% !important;
+  height: 50%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  position: relative;
+}

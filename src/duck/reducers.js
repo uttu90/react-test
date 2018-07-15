@@ -1,8 +1,8 @@
-import { combineReducer } from 'redux';
+import { combineReducers } from 'redux';
 import * as types from './types';
 import { authState, signingState } from './constants';
 
-function authReducer(state, action) {
+function authReducer(state=authState.UNAUTHORIZED, action) {
   switch (action.type) {
     case types.REGISTER:
       return authState.SIGNING_UP;
@@ -21,13 +21,13 @@ function authReducer(state, action) {
   }
 }
 
-function userReducer(state, action) {
+function userReducer(state={}, action) {
   const signUpStrategies = [
     signingState.GET_STARTED, 
     signingState.REGISTERED, 
     signingState.UPDATED
   ];
-  const signUpIndex = signUpStrategies.indexOf(state.authStatus);
+  const signUpIndex = signUpStrategies.indexOf(state.registerStatus);
   switch (action.type) {
     case types.NEXT_STEP:
       return {
@@ -47,7 +47,7 @@ function userReducer(state, action) {
         registerStatus: action.payload
       }
 
-    case types.UPDATE_USER:
+    case types.UPDATE_USER_DATA:
       return {
         ...state,
         [action.meta]: {
@@ -68,18 +68,14 @@ function validateReducer(state = {}, action) {
   if (action.type === types.VALIDATE) {
     return {
       ...state,
-      [action.meta]: {
-        ...state[action.meta],
-        ...action.payload
-      }
-      
+      ...action.payload
     }
   }
   return state;
 }
 
 
-const rootReducer = combineReducer({
+const rootReducer = combineReducers({
   authStatus: authReducer,
   user: userReducer,
   errors: validateReducer

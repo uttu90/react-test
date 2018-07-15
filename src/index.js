@@ -4,9 +4,11 @@ import { createStore, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
 import logger from 'redux-logger';
 import rootReducer, { duckMiddleWares, duckConstants } from './duck';
-import './index.css';
 import App from './App';
 import registerServiceWorker from './registerServiceWorker';
+
+import './index.css';
+import 'bootstrap/dist/css/bootstrap.css';
 
 const initialState = {
   authStatus: duckConstants.authState.UNAUTHORIZED,
@@ -16,10 +18,11 @@ const initialState = {
     infor: {}
   }
 }
+
 const store = createStore(
   rootReducer, 
-  applyMiddleware(duckMiddleWares.validationMiddleware, logger),
-  initialState
+  initialState,
+  applyMiddleware(duckMiddleWares.submitValidationMiddleware, logger)
 )
 
 ReactDOM.render((
