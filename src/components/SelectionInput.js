@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import classNames from 'classnames';
-import { FormGroup, Dropdown, DropdownItem, Col, Label, DropdownToggle, DropdownMenu } from 'reactstrap';
+import { FormGroup, Dropdown, DropdownItem, Col, Label, DropdownToggle, DropdownMenu, Tooltip } from 'reactstrap';
 import './SelectionInput.css';
 
 class SelectionInput extends Component {
@@ -21,7 +21,7 @@ class SelectionInput extends Component {
   }
 
   render() {
-    const { name, text, values, title, value, onChange, invalid } = this.props;
+    const { name, text, values, title, value, onChange, invalid, error } = this.props;
     const { open } = this.state;
     const validCheckClassName = classNames(
       "custom-dropdown-toggle", {
@@ -52,8 +52,11 @@ class SelectionInput extends Component {
                 ))
               }
             </DropdownMenu>
-          </Dropdown>  
+          </Dropdown>
         </Col>
+        <Tooltip placement="right" isOpen={!!error} target={name}>
+          {`${text} ${error}`}
+        </Tooltip>
       </FormGroup>
     );
   }

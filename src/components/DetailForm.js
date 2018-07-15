@@ -70,7 +70,7 @@ class DetailForm extends Component {
                 name={attr} 
                 text={getAttributeTitle(attr, account_type)}
                 onChange={this.onChange}
-                invalid={errors[attr]}
+                error={errors[attr]}
               />    
             ))
           }

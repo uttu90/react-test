@@ -1,5 +1,5 @@
 import React from 'react';
-import { FormGroup, Input, Label, Col } from 'reactstrap';
+import { FormGroup, Input, Label, Col, Tooltip } from 'reactstrap';
 import './RadioInput.css';
 
 export default function RadioInput(props) {
@@ -7,7 +7,7 @@ export default function RadioInput(props) {
     <FormGroup row>
       <Label for={props.name} sm={4}>{props.text}</Label>
       <Col sm={8}>
-        <div className="choices-container">
+        <div className="choices-container" id={props.name}>
           {
             props.values.map(value => (
               <Col key={value}>
@@ -23,6 +23,9 @@ export default function RadioInput(props) {
                   />
                   {value}
                 </Label>
+                <Tooltip placement="right" isOpen={!!props.error} target={props.name}>
+                  {`${props.text} ${props.error}`}
+                </Tooltip>
               </Col>
             ))
           }
