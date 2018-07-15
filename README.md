@@ -6,3 +6,4 @@ The react application sample for signup step;
 
 [TODO]:
 - [ ] Writing unittests;
+  - [x] Finished unitests for state;
