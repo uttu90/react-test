@@ -1,32 +1,28 @@
-import React, { Component } from 'react';
+import React from 'react';
 import ActionBar, { Spacer } from './ActionBar';
 
-class Agreement extends Component {
-  render() {
-    return (
-      <div className='form-container'>
-        <h1>Privacy and term</h1>
-        <div className='text-container'>
-          Lorem ipsum
-        </div>
-        <ActionBar>
-          <span 
-            onClick={this.props.cancel} 
-            className="action-bar-item"
-          >
-            Cancel
-          </span>
-          <Spacer />
-          <span 
-            onClick={this.props.accept} 
-            className="action-bar-item"
-          >
-            Submit
-          </span>
-        </ActionBar>
+export default function Agreement(props) {
+  return (
+    <div className='form-container'>
+      <h1>Privacy and term</h1>
+      <div className='text-container'>
+        Lorem ipsum
       </div>
-    );
-  }
+      <ActionBar>
+        <span 
+          onClick={props.cancel} 
+          className="action-bar-item"
+        >
+          Cancel
+        </span>
+        <Spacer />
+        <span 
+          onClick={props.accept} 
+          className="action-bar-item"
+        >
+          Submit
+        </span>
+      </ActionBar>
+    </div>
+  );
 }
-
-export default Agreement;
