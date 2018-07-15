@@ -52,10 +52,9 @@ export function lastStep() {
   }
 }
 
-export function confirm(confirmation) {
+export function confirm() {
   return {
-    type: types.CONFIRM,
-    payload: confirmation
+    type: types.CONFIRM
   }
 }
 

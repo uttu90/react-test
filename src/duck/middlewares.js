@@ -19,6 +19,7 @@ const localSavingMiddleware = ({ dispatch, getState }) => next => action => {
       saveDataToLocalStorage('auth', getState());
       return result;
 
+    case types.UNREGISTER:
     case types.SIGN_OUT:
       localStorage.removeItem('auth');
       return next(action);

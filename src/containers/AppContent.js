@@ -17,7 +17,16 @@ class AppContent extends Component {
   }
 
   get content() {
-    const { user, errors, submitUserData, updateUserData, lastStep, confirm } = this.props;
+    const { 
+      user, 
+      errors, 
+      submitUserData, 
+      updateUserData, 
+      lastStep, 
+      confirm, 
+      unregister
+    } = this.props;
+    
     const { registerStatus, credentials, infor } = user;
 
     switch (registerStatus) {
@@ -45,8 +54,8 @@ class AppContent extends Component {
       case duckConstants.registerState.UPDATED:
         return (
           <Agreement 
-            accept={() => confirm(duckConstants.registerState.ACCEPTED)}
-            cancel={() => confirm(duckConstants.registerState.UNACCEPTED)}
+            accept={confirm}
+            cancel={unregister}
           />
         );
       default:

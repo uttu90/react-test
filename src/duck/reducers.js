@@ -49,7 +49,6 @@ function userReducer(state={}, action) {
       return {
         ...state,
         registerStatus: registerState.CONFIRMED,
-        agreement: action.payload
       }
 
     case types.UPDATE_USER_DATA:
@@ -64,6 +63,7 @@ function userReducer(state={}, action) {
     case types.LOAD_USER:
       return action.payload.user;
     
+    case types.UNREGISTER:
     case types.SIGN_OUT:
       return {
         registerStatus: registerState.ANONYMOUS,
