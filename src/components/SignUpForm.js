@@ -3,25 +3,7 @@ import { Form } from 'reactstrap';
 import TextInput from './TextInput';
 import RadioInput from './RadioInput';
 import ActionBar, { Spacer } from './ActionBar';
-
-const LABELS = {
-  first_name: {
-    text: 'First name',
-    type: 'text'
-  },
-  last_name: {
-    text: 'Last name',
-    type: 'text'
-  },
-  email: {
-    text: 'Email',
-    type: 'email'
-  },
-  password: {
-    text: 'Password',
-    type: 'password'
-  }
-}
+import { LABELS } from '../contstants';
 
 class SignUpForm extends Component {
   constructor(props) {

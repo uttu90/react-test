@@ -2,25 +2,8 @@ import React, { Component } from 'react';
 import { Form } from 'reactstrap';
 import SelectionInput from './SelectionInput';
 import ActionBar, { Spacer } from './ActionBar';
+import { SELECTIONS } from '../contstants';
 
-const SELECTIONS = {
-  language: {
-    text: 'Language',
-    values: ['Vietnames', 'Dutch', 'English']
-  },
-  country: {
-    text: 'Home country',
-    values: ['Vietnam', 'Ha Lan', 'Anh']
-  },
-  timezone: {
-    text: 'Timezone',
-    values: ['-1', '0', '+1']
-  },
-  birth_year: {
-    text: 'Birth year',
-    values: ['1', '2', '3', '4']
-  }
-}
 
 function getAttributeTitle(attribute, account_type) {
   if (attribute !== 'language') return SELECTIONS[attribute].text;
