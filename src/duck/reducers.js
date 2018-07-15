@@ -24,13 +24,14 @@ function authReducer(state=authState.UNAUTHORIZED, action) {
   }
 }
 
+
+const signUpStrategies = [
+  registerState.ANONYMOUS,
+  registerState.REGISTERED,
+  registerState.UPDATED,
+];
+
 function userReducer(state={}, action) {
-  const signUpStrategies = [
-    registerState.ANONYMOUS, 
-    registerState.REGISTERED, 
-    registerState.UPDATED,
-    registerState.CONFIRMED
-  ];
   const signUpIndex = signUpStrategies.indexOf(state.registerStatus);
   switch (action.type) {
     case types.NEXT_STEP:
@@ -45,12 +46,6 @@ function userReducer(state={}, action) {
         registerStatus: signUpStrategies[signUpIndex - 1]
       }
     
-    case types.CONFIRM:
-      return {
-        ...state,
-        registerStatus: registerState.CONFIRMED,
-      }
-
     case types.UPDATE_USER_DATA:
       return {
         ...state,

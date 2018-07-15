@@ -10,9 +10,6 @@ const registerState = {
   ANONYMOUS: 'anonymous',
   REGISTERED: 'registered',
   UPDATED: 'updated',
-  ACCEPTED: 'accepted',
-  UNACCEPTED: 'unaccepted',
-  CONFIRMED: 'confirmed'
 }
 
 export {
