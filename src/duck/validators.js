@@ -26,8 +26,9 @@ function validateName(name='') {
 
 function validateEmail(email='') {
   if (email.length === 0) return 'is required';
-  const domain = email.split('@')[1] || '';
-  return domain.length < 3 ? 'is invalid' : '';
+  const [ emailName, domain = '' ] = email.split('@')[1];
+
+  return emailName.length === 0 || domain.length < 3 ? 'is invalid' : '';
 }
 
 function validatePassword(password='') {

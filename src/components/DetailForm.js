@@ -35,27 +35,36 @@ class DetailForm extends Component {
   constructor(props) {
     super(props);
 
+    this.workingField = 'infor';
+
     this.onChange = this.onChange.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
   }
 
   onChange(event) {
-    const { onChange, type } = this.props;
-    onChange(type, {[event.target.name]: event.target.value })
+    const { onChange } = this.props;
+    onChange(
+      this.workingField, 
+      {
+        [event.target.name]: event.target.value 
+      });
   }
 
   onSubmit() {
-    const { onSubmit, type } = this.props;
-    onSubmit(type);
+    const { onSubmit } = this.props;
+    onSubmit(this.workingField);
   }
 
   get title() {
-    const { account_type, name } = this.props;
-    return `Welcome ${account_type.toLowerCase()} ${name}`;
+    const { credentials } = this.props;
+    const { account_type, first_name, last_name } = credentials;
+    return `Welcome ${account_type.toLowerCase()} ${first_name} ${last_name}`;
   }
 
   render() {
-    const { data, account_type, errors } = this.props;
+    const { data, credentials, errors } = this.props;
+    const { account_type } = credentials;
+
     return (
       <div className='form-container'>
         <h1>{this.title}</h1>

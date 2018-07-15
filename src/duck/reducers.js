@@ -1,6 +1,6 @@
 import { combineReducers } from 'redux';
 import * as types from './types';
-import { authState, signingState } from './constants';
+import { authState, registerState } from './constants';
 
 function authReducer(state=authState.UNAUTHORIZED, action) {
   switch (action.type) {
@@ -23,9 +23,10 @@ function authReducer(state=authState.UNAUTHORIZED, action) {
 
 function userReducer(state={}, action) {
   const signUpStrategies = [
-    signingState.GET_STARTED, 
-    signingState.REGISTERED, 
-    signingState.UPDATED
+    registerState.ANONYMOUS, 
+    registerState.REGISTERED, 
+    registerState.UPDATED,
+    registerState.CONFIRMED
   ];
   const signUpIndex = signUpStrategies.indexOf(state.registerStatus);
   switch (action.type) {
@@ -44,7 +45,8 @@ function userReducer(state={}, action) {
     case types.CONFIRM:
       return {
         ...state,
-        registerStatus: action.payload
+        registerStatus: registerState.CONFIRMED,
+        agreement: action.payload
       }
 
     case types.UPDATE_USER_DATA:
@@ -61,8 +63,9 @@ function userReducer(state={}, action) {
     
     case types.SIGN_OUT:
       return {
-        ...state,
-        registerStatus: signingState.GET_STARTED
+        registerStatus: registerState.ANONYMOUS,
+        credentials: {},
+        infor: {}
       };
       
     default:
@@ -77,6 +80,11 @@ function validateReducer(state = {}, action) {
       ...action.payload
     }
   }
+
+  if (action.type === types.SIGN_OUT) {
+    return {};
+  }
+
   return state;
 }
 

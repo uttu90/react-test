@@ -27,6 +27,8 @@ class SignUpForm extends Component {
   constructor(props) {
     super(props);
 
+    this.workingField = 'credentials';
+
     this.onChange = this.onChange.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
   }
@@ -68,13 +70,18 @@ class SignUpForm extends Component {
   }
 
   onChange(event) {
-    const { onChange, type } = this.props;
-    onChange(type, {[event.target.name]: event.target.value });
+    const { onChange } = this.props;
+    onChange(
+      this.workingField, 
+      {
+        [event.target.name]: event.target.value 
+      }
+    );
   }
 
   onSubmit(event) {
-    const { onSubmit, type } = this.props;
-    onSubmit(type);
+    const { onSubmit } = this.props;
+    onSubmit(this.workingField);
     event.preventDefault();
   }
 }

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { compose } from 'redux';
 import { connect } from 'react-redux';
-import { Navbar, NavbarBrand, NavbarToggler, Collapse, Nav, NavItem, NavLink } from 'reactstrap';
+import { Navbar, NavbarBrand, Nav, NavItem, NavLink } from 'reactstrap';
 import { duckActions, duckConstants } from '../duck';
 
 class Menu extends Component {

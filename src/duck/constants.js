@@ -1,33 +1,22 @@
-// app states
-const UNAUTHORIZED = 'unauthorized';
-const SIGNING_UP = 'signing-up';
-const AUTHORIZED = 'authorized';
-
+// auth states
 const authState =  {
-  UNAUTHORIZED,
-  SIGNING_UP,
-  AUTHORIZED
+  UNAUTHORIZED : 'unauthorized',
+  SIGNING_UP: 'signing-up',
+  AUTHORIZED: 'authorized'
 }
 
 // signing states
-const GET_STARTED = 'get-started';
-const REGISTERED = 'registered';
-const UPDATED = 'updated';
-const ACCEPTED = 'accepted';
-const UNACCEPTED = 'unaccepted';
-const CONFIRMED = 'confirmed';
-
-const signingState = {
-  GET_STARTED,
-  REGISTERED,
-  UPDATED,
-  ACCEPTED,
-  UNACCEPTED,
-  CONFIRMED
+const registerState = {
+  ANONYMOUS: 'anonymous',
+  REGISTERED: 'registered',
+  UPDATED: 'updated',
+  ACCEPTED: 'accepted',
+  UNACCEPTED: 'unaccepted',
+  CONFIRMED: 'confirmed'
 }
 
 export {
   authState,
-  signingState
+  registerState
 }
 

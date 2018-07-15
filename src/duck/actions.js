@@ -1,5 +1,4 @@
 import * as types from './types';
-import { signingState } from './constants';
 
 export function register() {
   return {
@@ -7,9 +6,10 @@ export function register() {
   }
 }
 
-export function loadUser() {
+export function loadUser(initState) {
   return {
-    type: types.LOAD_USER
+    type: types.LOAD_USER,
+    payload: initState
   }
 }
 
@@ -46,10 +46,10 @@ export function lastStep() {
   }
 }
 
-export function confirm(accepted = true) {
+export function confirm(confirmation) {
   return {
     type: types.CONFIRM,
-    payload: accepted ? signingState.ACCEPTED : signingState.UNACCEPTED
+    payload: confirmation
   }
 }
 

@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import { createStore, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
 import logger from 'redux-logger';
-import rootReducer, { duckMiddleWares, duckConstants } from './duck';
+import rootReducer, { duckMiddleWares, duckConstants, duckActions } from './duck';
 import App from './App';
 import registerServiceWorker from './registerServiceWorker';
 
@@ -13,7 +13,7 @@ import 'bootstrap/dist/css/bootstrap.css';
 const initialState = {
   authStatus: duckConstants.authState.UNAUTHORIZED,
   user: {
-    registerStatus: duckConstants.signingState.GET_STARTED,
+    registerStatus: duckConstants.registerState.ANONYMOUS,
     credentials: {},
     infor: {}
   }
@@ -22,8 +22,14 @@ const initialState = {
 const store = createStore(
   rootReducer, 
   initialState,
-  applyMiddleware(duckMiddleWares.submitValidationMiddleware, logger)
-)
+  applyMiddleware(
+    duckMiddleWares.submitValidationMiddleware, 
+    duckMiddleWares.localSavingMiddleware,
+    logger
+  )
+);
+
+store.dispatch(duckActions.loadUser(initialState));
 
 ReactDOM.render((
   <Provider store={store}>

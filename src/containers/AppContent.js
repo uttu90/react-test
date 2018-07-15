@@ -13,35 +13,32 @@ class AppContent extends Component {
     const { registerStatus, credentials, infor } = user;
 
     switch (registerStatus) {
-      case duckConstants.signingState.GET_STARTED:
+      case duckConstants.registerState.ANONYMOUS:
         return (
           <SignUpForm 
             onSubmit={submitUserData} 
             data={credentials}
             errors={errors}
-            type='credentials' 
             onChange={updateUserData}
           />
         );
       
-      case duckConstants.signingState.REGISTERED:
+      case duckConstants.registerState.REGISTERED:
         return (
           <DetailForm 
             onSubmit={submitUserData} 
             data={infor} 
             errors={errors}
-            type='infor' 
             onChange={updateUserData}
             back={lastStep}
-            account_type={credentials.account_type}
-            name={`${credentials.first_name} ${credentials.last_name}`}
+            credentials={credentials}
           />);
       
-      case duckConstants.signingState.UPDATED:
+      case duckConstants.registerState.UPDATED:
         return (
           <Agreement 
-            accept={() => confirm(duckConstants.signingState.ACCEPTED)}
-            cancel={() => confirm(duckConstants.signingState.UNACCEPTED)}
+            accept={() => confirm(duckConstants.registerState.ACCEPTED)}
+            cancel={() => confirm(duckConstants.registerState.UNACCEPTED)}
           />
         );
       default:

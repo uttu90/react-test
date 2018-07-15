@@ -1,6 +1,32 @@
 import * as types from './types';
 import { nextStep, validate } from './actions';
-import validateAttribute, { checkValidData } from './utils';
+import { 
+  validateAttribute, 
+  checkValidData, 
+  saveDataToLocalStorage, 
+  getDataFromLocalStorage
+} from './utils';
+
+const localSavingMiddleware = ({ dispatch, getState }) => next => action => {
+  switch (action.type) {
+    case types.LOAD_USER:
+      const user = getDataFromLocalStorage('auth');
+      action.payload = user || action.payload;
+      return next(action);
+
+    case types.CONFIRM:
+      let result = next(action);
+      saveDataToLocalStorage('auth', getState());
+      return result;
+
+    case types.SIGN_OUT:
+      localStorage.removeItem('auth');
+      return next(action);
+
+    default:
+      return next(action);
+  }
+}
 
 const submitValidationMiddleware = ({ dispatch, getState }) => next => action => {
   if (action.type !== types.SUBMIT_USER_DATA) {
@@ -11,9 +37,9 @@ const submitValidationMiddleware = ({ dispatch, getState }) => next => action =>
   const errors = validateAttribute(field, user[field]);
   dispatch(validate(errors));
   if (!checkValidData(errors)) {
-    localStorage.setItem('auth', JSON.stringify(getState()));
     dispatch(nextStep());
+    saveDataToLocalStorage('auth', getState());
   }
 }
 
-export { submitValidationMiddleware };
+export { submitValidationMiddleware, localSavingMiddleware };
