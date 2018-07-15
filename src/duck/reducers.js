@@ -2,7 +2,7 @@ import { combineReducers } from 'redux';
 import * as types from './types';
 import { authState, registerState } from './constants';
 
-function authReducer(state=authState.UNAUTHORIZED, action) {
+export function authReducer(state=authState.UNAUTHORIZED, action) {
   switch (action.type) {
     case types.REGISTER:
       return authState.SIGNING_UP;
@@ -29,7 +29,7 @@ const signUpStrategies = [
   registerState.UPDATED,
 ];
 
-function userReducer(state={}, action) {
+export function userReducer(state={}, action) {
   const signUpIndex = signUpStrategies.indexOf(state.registerStatus);
   switch (action.type) {
     case types.NEXT_STEP:
@@ -69,7 +69,7 @@ function userReducer(state={}, action) {
   }
 }
 
-function validateReducer(state = {}, action) {
+export function validateReducer(state = {}, action) {
   switch (action.type) {
     case types.VALIDATE:
       return {

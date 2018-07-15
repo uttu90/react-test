@@ -19,7 +19,7 @@ class SignUpForm extends Component {
     const { data, errors } = this.props;
     return (
       <div className='form-container'>
-        <h1>Get started</h1>
+        <h1>Get started now!</h1>
         <Form onSubmit={this.onSubmit} className='custom-form'>
           {
             Object.keys(LABELS).map(attr => (
