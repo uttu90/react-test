@@ -7,6 +7,9 @@ function authReducer(state=authState.UNAUTHORIZED, action) {
     case types.REGISTER:
       return authState.SIGNING_UP;
     
+    case types.UNREGISTER:
+      return authState.UNAUTHORIZED;
+    
     case types.CONFIRM:
       return authState.AUTHORIZED;  
 

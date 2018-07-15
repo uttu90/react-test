@@ -8,6 +8,14 @@ import './AppContent.css';
 
 class AppContent extends Component {
 
+  toggle() {
+    const { authStatus, user: { registerStatus }, unregister } = this.props;
+    if (authStatus === duckConstants.authState.SIGNING_UP && 
+      registerStatus === duckConstants.registerState.ANONYMOUS) {
+      unregister();
+    }
+  }
+
   get content() {
     const { user, errors, submitUserData, updateUserData, lastStep, confirm } = this.props;
     const { registerStatus, credentials, infor } = user;
@@ -54,6 +62,7 @@ class AppContent extends Component {
           className="custom-modal-diaglog"
           contentClassName="custom-modal-content"
           isOpen={authStatus === duckConstants.authState.SIGNING_UP}
+          toggle={this.toggle.bind(this)}
         >
           {this.content}
         </Modal>
@@ -75,7 +84,8 @@ function mapDispatchToProps(dispatch) {
     submitUserData: compose(dispatch, duckActions.submitUserData),
     updateUserData: compose(dispatch, duckActions.updateUserData),
     confirm: compose(dispatch, duckActions.confirm),
-    lastStep: compose(dispatch, duckActions.lastStep)
+    lastStep: compose(dispatch, duckActions.lastStep),
+    unregister: compose(dispatch, duckActions.unregister)
   }
 }
 

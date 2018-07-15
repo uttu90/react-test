@@ -22,15 +22,15 @@ class SignUpForm extends Component {
         <h1>Get started</h1>
         <Form onSubmit={this.onSubmit} className='custom-form'>
           {
-            Object.keys(LABELS).map(label => (
+            Object.keys(LABELS).map(attr => (
               <TextInput 
-                key={label}
-                name={label}
-                type={LABELS[label].type}
-                text={LABELS[label].text}
-                value={data[label] || ''}
+                key={attr}
+                name={attr}
+                type={LABELS[attr].type}
+                text={LABELS[attr].text}
+                value={data[attr] || ''}
                 onChange={this.onChange}
-                error={errors[label]}
+                error={errors[attr]}
               />
             ))
           }

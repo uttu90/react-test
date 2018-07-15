@@ -6,6 +6,12 @@ export function register() {
   }
 }
 
+export function unregister() {
+  return {
+    type: types.UNREGISTER
+  }
+}
+
 export function loadUser(initState) {
   return {
     type: types.LOAD_USER,

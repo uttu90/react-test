@@ -1,5 +1,6 @@
 // action types for updating app state
 const REGISTER = 'duck/auth/register';
+const UNREGISTER = 'duck/auth/unregister';
 const AUTHORIZE = 'duck/auth/authorize';
 const SIGN_OUT = 'duck/auth/sign-out';
 const LOAD_USER = 'duck/auth/load-user';
@@ -17,6 +18,7 @@ const VALIDATE = 'duck/user/validate';
 
 export {
   REGISTER,
+  UNREGISTER,
   AUTHORIZE,
   SIGN_OUT,
   LOAD_USER,
