@@ -77,18 +77,20 @@ function userReducer(state={}, action) {
 }
 
 function validateReducer(state = {}, action) {
-  if (action.type === types.VALIDATE) {
-    return {
-      ...state,
-      ...action.payload
-    }
+  switch (action.type) {
+    case types.VALIDATE:
+      return {
+        ...state,
+        ...action.payload
+      };
+    
+    case types.UNREGISTER:
+    case types.SIGN_OUT:
+      return {};
+  
+    default:
+      return state;
   }
-
-  if (action.type === types.SIGN_OUT) {
-    return {};
-  }
-
-  return state;
 }
 
 
