@@ -4,7 +4,7 @@ import ActionBar, { Spacer } from './ActionBar';
 export default function Agreement(props) {
   return (
     <div className='form-container'>
-      <h1>Privacy and term</h1>
+      <h1>Privacy and Terms</h1>
       <div className='text-container'>
         Lorem ipsum
       </div>
@@ -17,7 +17,7 @@ export default function Agreement(props) {
         </span>
         <Spacer />
         <span 
-          onClick={props.accept} 
+          onClick={props.submit} 
           className="action-bar-item"
         >
           Submit

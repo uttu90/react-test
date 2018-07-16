@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
-import classNames from 'classnames';
-import { 
+import {
   Col, 
   Dropdown, 
   DropdownItem, 
@@ -30,19 +29,14 @@ class SelectionInput extends Component {
   }
 
   render() {
-    const { name, text, values, title, value, onChange, invalid, error } = this.props;
+    const { name, text, values, title, value, onChange, error } = this.props;
     const { open } = this.state;
-    const validCheckClassName = classNames(
-      "custom-dropdown-toggle", {
-        "custom-dropdown-toggle--invalid": invalid
-      }
-    );
     return (
       <FormGroup row>
         <Label for={name} sm={4}>{text}</Label>
         <Col sm={8}>
           <Dropdown isOpen={open} toggle={this.toggle} id={name}>
-            <DropdownToggle caret className={validCheckClassName}>
+            <DropdownToggle caret className="custom-dropdown-toggle">
               {
                 value || title
               }

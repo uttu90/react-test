@@ -4,10 +4,6 @@
   color: black !important;
 }
 
-.custom-dropdown-toggle--invalid {
-  border-color: red !important;
-}
-
 .custom-dropdown-menu {
   width: 100%;
   max-height: 300px;

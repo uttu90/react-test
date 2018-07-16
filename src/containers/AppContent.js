@@ -54,7 +54,7 @@ class AppContent extends Component {
       case duckConstants.registerState.UPDATED:
         return (
           <Agreement 
-            accept={confirm}
+            submit={confirm}
             cancel={unregister}
           />
         );
