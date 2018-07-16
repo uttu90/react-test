@@ -1,5 +1,5 @@
 import React from 'react';
-import { FormGroup, Input, Label, Col, Tooltip } from 'reactstrap';
+import { FormGroup, FormText,Input, Label, Col, Tooltip } from 'reactstrap';
 
 export default function TextInput(props) {
   return (
@@ -17,6 +17,13 @@ export default function TextInput(props) {
         <Tooltip placement="right" isOpen={!!props.error} target={props.name}>
           {`${props.text} ${props.error}`}
         </Tooltip>
+        {props.name === 'password' && (
+          <FormText>
+            {`Password must contain at least 1 lower case char, 
+              1 upper case, 1 number, 1 special char (!@#$%) and at least 8 characters long.`
+            }
+          </FormText>
+        )}
       </Col>
     </FormGroup>
   )
