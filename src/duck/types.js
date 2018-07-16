@@ -8,7 +8,6 @@ const LOAD_USER = 'duck/auth/load-user';
 // action types for user signing state
 const UPDATE_USER_DATA = 'duck/user/update-user-data';
 const SUBMIT_USER_DATA = 'duck/user/submit-user-data';
-const SET_USER_STATUS = 'duck/user/set-user-status';
 const CONFIRM = 'duck/user/confirm-agreement';
 const NEXT_STEP = 'duck/user/next-step';
 const LAST_STEP = 'duck/user/last-step';
@@ -27,6 +26,5 @@ export {
   CONFIRM,
   NEXT_STEP,
   LAST_STEP,
-  SET_USER_STATUS,
   VALIDATE
 }

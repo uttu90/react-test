@@ -1,5 +1,5 @@
 import React from 'react';
-import { FormGroup, FormText,Input, Label, Col, Tooltip } from 'reactstrap';
+import { Col, FormGroup, FormText, Input, Label, Tooltip } from 'reactstrap';
 
 export default function TextInput(props) {
   return (
